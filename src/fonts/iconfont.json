@@ -1,0 +1,37 @@
+{
+  "id": "1800908",
+  "name": "webpack-demo",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14477196",
+      "name": "静音",
+      "font_class": "jingyin",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "14477197",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "14477198",
+      "name": "广播关",
+      "font_class": "guangboguan",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "14477199",
+      "name": "视频关",
+      "font_class": "shipinguan",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    }
+  ]
+}
