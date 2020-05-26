@@ -12,8 +12,8 @@ const devConfig = {
     contentBase: './dist',    // 指定dev运行的路径
     open: true,    // 自动打开浏览器
     port: 8080,   // 设置访问端口，默认为8080
-    hot: true,
-    hotOnly: true
+    hot: true,    // 是否支持热更新
+    hotOnly: true   // 热更新的过程中，是否不需要刷新浏览器
   },
   optimization: {
     usedExports: true

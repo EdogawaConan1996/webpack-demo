@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -14,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: 'babel-loader',
           options: {}
@@ -26,8 +27,15 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            limit: 8192
+            limit: 8192    // 小于limit指定的大小，图片按照base64格式解析，大于则正常按照文件进行请求
           }
+        },
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(eot|ttf|svg)$/,
+        use: {
+          loader: 'file-loader'
         },
         exclude: /node_modules/
       },
@@ -67,40 +75,7 @@ module.exports = {
     new HtmlWebpackPlugin({template: './public/index.html'}),
     new CleanWebpackPlugin( {
       root: path.resolve(__dirname, './dist')
-    })
-  ],
-  optimization: {
-    // 如果splitChunks设置为空对象，则默认内容如下
-    splitChunks: {
-      chunks: 'async',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 6,
-      maxInitialRequests: 4,
-      automaticNameDelimiter: '~',
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
-    // splitChunks: {
-    //   chunks: 'all',    // 代码分割方式，async只对异步加载方式的代码生效,initial只对同步加载方式的代码生效,all对所有的都生效
-    //   cacheGroups: {
-    //     vendors: {
-    //       test: /[\\/]node_modules[\\/]/,
-    //       priority: -10,
-    //       filename: 'vendors.js'
-    //     },
-    //     default: false
-    //   }
-    // }
-  }
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };
