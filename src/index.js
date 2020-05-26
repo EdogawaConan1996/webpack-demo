@@ -1,18 +1,22 @@
-import '@babel/polyfill';
+/**
+ * 同步加载
+ */
+import _ from 'lodash'
+let element = document.createElement('div');
+element.innerHTML = _.join(['Jianghuchuan', '277'], '-');
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+/**
+ * 异步加载
+ * @returns {Promise<*>}
+ */
+// function getComponent() {
+//   return import(/* webpackChunkName:"lodash" */'lodash').then(({default: _}) => {
+//     let element = document.createElement('div');
+//     element.innerHTML = _.join(['Jianghuchuan', '277'], '-');
+//     return element
+//   })
+// }
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-       <div>Hello World</div>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+getComponent().then(element => {
+  document.body.appendChild(element)
+});
