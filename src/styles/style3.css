@@ -1,3 +1,4 @@
-div:nth-of-type(odd) {
-    background-color: yellow;
+@import "style4.css";
+body {
+  background: green;
 }

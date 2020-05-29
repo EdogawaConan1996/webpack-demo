@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "webpack实践",
   "sideEffects": [
-    "@babel/polly-fill"
+    "*.css"
   ],
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.js",
-    "dev-build": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "dev": "webpack-dev-server --config webpack.common.js",
+    "dev-build": "webpack --config webpack.common.js",
+    "build": "webpack --env.production --config webpack.common.js"
   },
   "keywords": [
     "webpack"
@@ -27,8 +27,12 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
+    "cssnano": "^4.1.10",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "imports-loader": "^0.8.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
@@ -40,7 +44,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.9.6",
+    "core-js": "^3.6.5",
     "express": "^4.17.1",
+    "jquery": "^3.5.1",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
     "lodash": "^4.17.15",
